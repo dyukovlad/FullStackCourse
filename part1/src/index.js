@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
 // const Hello = ({ name, age }) => {
@@ -116,10 +116,15 @@ const Button = (props) => (
   <button onClick={props.handleClick}>{props.text}</button>
 )
 
-const Display = props => <div>{props.value}</div>
+const Display = (props) => <div>{props.value}</div>
 
 const App = (props) => {
   const [value, setValue] = useState(20)
+
+  useEffect(() => {
+    // Обновляем заголовок документа, используя API браузера
+    document.title = `Вы нажали ${value} раз`;
+  });
 
   const setToValue = (newValue) => {
     setValue(newValue)
