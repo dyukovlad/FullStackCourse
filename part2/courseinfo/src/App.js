@@ -1,22 +1,61 @@
 import React from 'react'
-import Course from './components/Course'
+import Courses from './components/Courses'
 
-const App = ({ course }) => {
-    // console.log(course.parts);
-    const rows = () => course.parts.map(parts =>
-        <Course  key={parts.id} course={parts} />
+
+const App = () => {
+
+    const courses = [
+        {
+          name: 'Half Stack application development',
+          id: 1,
+          parts: [
+            {
+              name: 'Fundamentals of React',
+              exercises: 10,
+              id: 1
+            },
+            {
+              name: 'Using props to pass data',
+              exercises: 7,
+              id: 2
+            },
+            {
+              name: 'State of a component',
+              exercises: 14,
+              id: 3
+            },
+            {
+              name: 'Redux',
+              exercises: 11,
+              id: 4
+            }
+          ]
+        }, 
+        {
+          name: 'Node.js',
+          id: 2,
+          parts: [
+            {
+              name: 'Routing',
+              exercises: 3,
+              id: 1
+            },
+            {
+              name: 'Middlewares',
+              exercises: 7,
+              id: 2
+            }
+          ]
+        }
+      ]
+
+    const all_courses = () => courses.map(val =>
+        <Courses key={val.id} courses={val} />
     )
-
-    const summ = () => course.parts.reduce((acc, sum) => {
-        return acc + sum.exercises;
-    }, 0)
 
   return (
     <div>
-      <ul>
-        {rows()}
-        <p><strong>total of {summ()} exercises</strong></p>
-      </ul>
+        {all_courses()}
     </div>
   )
 }
